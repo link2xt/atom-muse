@@ -1,0 +1,80 @@
+'scopeName': 'source.muse'
+'name': 'Muse'
+'fileTypes': [
+  'muse'
+]
+'patterns': [
+  { 'include': '#emphasis' }
+  { 'include': '#comment-line' }
+  { 'include': '#comment-block' }
+  { 'include': '#horizontal-rule' }
+  { 'include': '#page-break' }
+  { 'include': '#example' }
+  { 'include': '#heading' }
+]
+'repository':
+  'comment-line':
+    {
+      'match': '^;(\\s.*|)$'
+      'name': 'comment.line.muse'
+    }
+  'comment-block':
+    {
+      'begin': '^.*<comment>',
+      'end': '</comment>',
+      'name': 'comment.block.muse'
+    }
+  'horizontal-rule':
+    {
+      'match': '^-{4,}\\s*$',
+      'name': 'comment.hr.muse'
+    }
+  'page-break':
+    {
+      'match': '^\\s{6,}\\* \\* \\* \\* \\*\\s*$',
+      'name': 'comment.pagebreak.muse'
+    }
+  'heading':
+    {
+      'match': '^\\\*+ .*$',
+      'name': 'markup.heading.muse'
+    }
+  'example':
+    {
+      'begin': '<example>',
+      'end': '</example>',
+      'name': 'markup.raw.muse'
+    }
+  'emphasis':
+    'patterns': [
+      {
+        'begin': '\\*\\*\\*(?!\\s|\\*)'
+        'end': '(?<!\\s)\\*\\*\\*'
+        'name': 'markup.bold.italic.muse'
+      },
+      {
+        'begin': '\\\*\\\*(?!\\s|\\*)'
+        'end': '(?<!\\s)\\\*\\\*'
+        'name': 'markup.bold.muse'
+      },
+      {
+        'begin': '\\*(?!\\s|\\*)'
+        'end': '(?<!\\s)\\*'
+        'name': 'markup.italic.muse'
+      },
+      {
+        'begin': '<strong>'
+        'end': '</strong>'
+        'name': 'markup.bold.muse'
+      },
+      {
+        'begin': '<em>'
+        'end': '</em>'
+        'name': 'markup.italic.muse'
+      },
+      {
+        'begin': '<strong>'
+        'end': '</strong>'
+        'name': 'markup.bold.muse'
+      }
+    ]

@@ -1,0 +1,17 @@
+'.source.muse':
+  'Directive':
+    'prefix': 'dir'
+    'body': '#${1:Key} ${2:Value}'
+  'Page break':
+    'prefix': 'pb'
+    'body': '      * * * * *'
+  'Example':
+    'prefix': 'ex'
+    'body': """
+    <example>
+    $1
+    </example>$0
+    """
+  'Link':
+    'prefix': 'l'
+    'body': '[[${1:URL}][${2:Description}]]$0'

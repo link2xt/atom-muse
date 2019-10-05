@@ -1,0 +1,17 @@
+{
+  "name": "atom-muse",
+  "version": "0.0.0",
+  "description": "Syntax highlighting and snippets for Muse markup",
+  "keywords": [
+    "language",
+    "grammar",
+    "muse",
+    "amusewiki",
+    "markup"
+  ],
+  "repository": "https://github.com/link2xt/atom-muse",
+  "license": "Unlicense",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  }
+}

@@ -1,0 +1,3 @@
+'.source.muse':
+  'editor':
+    'commentStart': '; '
