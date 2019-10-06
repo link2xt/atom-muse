@@ -40,6 +40,10 @@ describe "Muse grammar", ->
     {tokens} = grammar.tokenizeLine("----  ")
     expect(tokens[0]).toEqual value: "----  ", scopes: ["source.muse", "comment.hr.muse"]
 
+  it "tokenizes single asterisks", ->
+    {tokens} = grammar.tokenizeLine("Foo * bar * baz")
+    expect(tokens[0]).toEqual value: "Foo * bar * baz", scopes: ["source.muse"]
+
   it "tokenizes emphasis", ->
     {tokens} = grammar.tokenizeLine("*Foo bar*")
     expect(tokens[0]).toEqual value: "*", scopes: ["source.muse", "markup.italic.muse"]
