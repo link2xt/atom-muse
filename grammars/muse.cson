@@ -4,6 +4,7 @@
   'muse'
 ]
 'patterns': [
+  { 'include': '#code' }
   { 'include': '#emphasis' }
   { 'include': '#comment-line' }
   { 'include': '#comment-block' }
@@ -76,5 +77,13 @@
         'begin': '<strong>'
         'end': '</strong>'
         'name': 'markup.bold.muse'
+      }
+    ]
+  'code':
+    'patterns': [
+      {
+        'begin': '=',
+        'end': '=',
+        'name': 'markup.raw.muse'
       }
     ]

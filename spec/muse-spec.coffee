@@ -51,3 +51,9 @@ describe "Muse grammar", ->
     expect(tokens[0]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
     expect(tokens[1]).toEqual value: "Foo bar", scopes: ["source.muse", "markup.bold.muse"]
     expect(tokens[2]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
+
+  it "tokenizes code", ->
+    {tokens} = grammar.tokenizeLine("=code=")
+    expect(tokens[0]).toEqual value: "=", scopes: ["source.muse", "markup.raw.muse"]
+    expect(tokens[1]).toEqual value: "code", scopes: ["source.muse", "markup.raw.muse"]
+    expect(tokens[2]).toEqual value: "=", scopes: ["source.muse", "markup.raw.muse"]
