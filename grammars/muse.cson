@@ -27,7 +27,7 @@
     }
   'comment-block':
     {
-      'begin': '^.*<comment>',
+      'begin': '<comment>',
       'end': '</comment>',
       'name': 'comment.block.muse'
     }
