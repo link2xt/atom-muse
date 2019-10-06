@@ -10,7 +10,8 @@
   { 'include': '#comment-block' }
   { 'include': '#horizontal-rule' }
   { 'include': '#page-break' }
-  { 'include': '#example' }
+  { 'include': '#example'}
+  { 'include': '#example-tag' }
   { 'include': '#heading' }
 ]
 'repository':
@@ -41,6 +42,12 @@
       'name': 'markup.heading.muse'
     }
   'example':
+    {
+      'begin': '{{{'
+      'end': '}}}'
+      'name': 'markup.raw.muse'
+    }
+  'example-tag':
     {
       'begin': '<example>',
       'end': '</example>',
