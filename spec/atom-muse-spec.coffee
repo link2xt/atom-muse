@@ -39,3 +39,15 @@ describe "Muse grammar", ->
     # Whitespace is allowed after the horizontal rule
     {tokens} = grammar.tokenizeLine("----  ")
     expect(tokens[0]).toEqual value: "----  ", scopes: ["source.muse", "comment.hr.muse"]
+
+  it "tokenizes emphasis", ->
+    {tokens} = grammar.tokenizeLine("*Foo bar*")
+    expect(tokens[0]).toEqual value: "*", scopes: ["source.muse", "markup.italic.muse"]
+    expect(tokens[1]).toEqual value: "Foo bar", scopes: ["source.muse", "markup.italic.muse"]
+    expect(tokens[2]).toEqual value: "*", scopes: ["source.muse", "markup.italic.muse"]
+
+  it "tokenizes strong emphasis", ->
+    {tokens} = grammar.tokenizeLine("**Foo bar**")
+    expect(tokens[0]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
+    expect(tokens[1]).toEqual value: "Foo bar", scopes: ["source.muse", "markup.bold.muse"]
+    expect(tokens[2]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
