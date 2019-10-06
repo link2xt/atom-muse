@@ -3,7 +3,7 @@ describe "Muse grammar", ->
 
   beforeEach ->
     waitsForPromise ->
-      atom.packages.activatePackage("atom-muse")
+      atom.packages.activatePackage("language-muse")
 
     runs ->
       grammar = atom.grammars.grammarForScopeName("source.muse")
