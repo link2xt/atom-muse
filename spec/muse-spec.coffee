@@ -68,6 +68,12 @@ describe "Muse grammar", ->
     expect(tokens[1]).toEqual value: "code", scopes: ["source.muse", "markup.raw.muse"]
     expect(tokens[2]).toEqual value: "</code>", scopes: ["source.muse", "markup.raw.muse"]
 
+  it "tokenizes verbatim tag", ->
+    {tokens} = grammar.tokenizeLine("<verbatim>foo *bar* baz</verbatim>")
+    expect(tokens[0]).toEqual value: "<verbatim>", scopes: ["source.muse", "markup.raw.muse"]
+    expect(tokens[1]).toEqual value: "foo *bar* baz", scopes: ["source.muse", "markup.raw.muse"]
+    expect(tokens[2]).toEqual value: "</verbatim>", scopes: ["source.muse", "markup.raw.muse"]
+
   it "tokenizes examples", ->
     [firstLineTokens, secondLineTokens, thirdLineTokens] = grammar.tokenizeLines("{{{\nexample\n}}}")
     expect(firstLineTokens[0]).toEqual value: "{{{", scopes: ["source.muse", "markup.raw.muse"]
