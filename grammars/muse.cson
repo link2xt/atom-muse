@@ -8,6 +8,7 @@
   { 'include': '#code-tag' }
   { 'include': '#verbatim-tag'}
   { 'include': '#emphasis' }
+  { 'include': '#del-tag' }
   { 'include': '#comment-line' }
   { 'include': '#comment-block' }
   { 'include': '#horizontal-rule' }
@@ -110,5 +111,13 @@
         'begin': '<verbatim>',
         'end': '</verbatim>',
         'name': 'markup.raw.muse'
+      }
+    ]
+  'del-tag':
+    'patterns': [
+      {
+        'begin': '<del>'
+        'end': '</del>'
+        'name': 'markup.deleted.muse'
       }
     ]
