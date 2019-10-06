@@ -89,3 +89,9 @@ describe "Muse grammar", ->
   it "tokenizes > quotes", ->
     {tokens} = grammar.tokenizeLine("> foo bar")
     expect(tokens[0]).toEqual value: "> foo bar", scopes: ["source.muse", "markup.quote.muse"]
+
+  it "tokenizes links", ->
+    {tokens} = grammar.tokenizeLine("[[https://example.com]]")
+    expect(tokens[0]).toEqual value: "[[", scopes: ["source.muse", "markup.underline.link.muse"]
+    expect(tokens[1]).toEqual value: "https://example.com", scopes: ["source.muse", "markup.underline.link.muse"]
+    expect(tokens[2]).toEqual value: "]]", scopes: ["source.muse", "markup.underline.link.muse"]

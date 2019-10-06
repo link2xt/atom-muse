@@ -8,6 +8,7 @@
   { 'include': '#code-tag' }
   { 'include': '#verbatim-tag'}
   { 'include': '#emphasis' }
+  { 'include': '#link' }
   { 'include': '#del-tag' }
   { 'include': '#comment-line' }
   { 'include': '#comment-block' }
@@ -127,5 +128,13 @@
       {
         'match': '^>.*$'
         'name': 'markup.quote.muse'
+      }
+    ]
+  'link':
+    'patterns': [
+      {
+        'begin': '\\[\\['
+        'end': ']]'
+        'name': 'markup.underline.link.muse'
       }
     ]
