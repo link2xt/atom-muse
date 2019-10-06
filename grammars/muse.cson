@@ -5,6 +5,7 @@
 ]
 'patterns': [
   { 'include': '#code' }
+  { 'include': '#code-tag' }
   { 'include': '#emphasis' }
   { 'include': '#comment-line' }
   { 'include': '#comment-block' }
@@ -91,6 +92,14 @@
       {
         'begin': '=',
         'end': '=',
+        'name': 'markup.raw.muse'
+      }
+    ]
+  'code-tag':
+    'patterns': [
+      {
+        'begin': '<code>',
+        'end': '</code>'
         'name': 'markup.raw.muse'
       }
     ]
