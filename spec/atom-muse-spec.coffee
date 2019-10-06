@@ -3,10 +3,10 @@ describe "Muse grammar", ->
 
   beforeEach ->
     waitsForPromise ->
-      atom.packages.activatePackage("language-muse")
+      atom.packages.activatePackage("atom-muse")
 
     runs ->
-      grammar = atom.syntax.grammarForScopeName("source.muse")
+      grammar = atom.grammars.grammarForScopeName("source.muse")
 
   it "parses the grammar", ->
     expect(grammar).toBeTruthy()
