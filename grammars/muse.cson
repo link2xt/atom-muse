@@ -16,6 +16,7 @@
   { 'include': '#example'}
   { 'include': '#example-tag' }
   { 'include': '#heading' }
+  { 'include': '#quote-line' }
 ]
 'repository':
   'comment-line':
@@ -119,5 +120,12 @@
         'begin': '<del>'
         'end': '</del>'
         'name': 'markup.deleted.muse'
+      }
+    ]
+  'quote-line':
+    'patterns': [
+      {
+        'match': '^>.*$'
+        'name': 'markup.quote.muse'
       }
     ]

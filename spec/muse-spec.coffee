@@ -85,3 +85,7 @@ describe "Muse grammar", ->
     expect(tokens[0]).toEqual value: "<del>", scopes: ["source.muse", "markup.deleted.muse"]
     expect(tokens[1]).toEqual value: "foo bar", scopes: ["source.muse", "markup.deleted.muse"]
     expect(tokens[2]).toEqual value: "</del>", scopes: ["source.muse", "markup.deleted.muse"]
+
+  it "tokenizes > quotes", ->
+    {tokens} = grammar.tokenizeLine("> foo bar")
+    expect(tokens[0]).toEqual value: "> foo bar", scopes: ["source.muse", "markup.quote.muse"]
