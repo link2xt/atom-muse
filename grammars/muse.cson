@@ -126,7 +126,7 @@
   'quote-line':
     'patterns': [
       {
-        'match': '^>.*$'
+        'match': '^>(\\s.*)$'
         'name': 'markup.quote.muse'
       }
     ]
