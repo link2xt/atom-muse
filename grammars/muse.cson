@@ -94,7 +94,7 @@
   'code':
     'patterns': [
       {
-        'begin': '=',
+        'begin': '=(?!\\s|=)',
         'end': '=',
         'name': 'markup.raw.muse'
       }
