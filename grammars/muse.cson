@@ -18,6 +18,8 @@
   { 'include': '#example-tag' }
   { 'include': '#heading' }
   { 'include': '#quote-line' }
+  { 'include': '#unordered-list-marker' }
+  { 'include': '#ordered-list-marker' }
 ]
 'repository':
   'comment-line':
@@ -136,5 +138,23 @@
         'begin': '\\[\\['
         'end': ']]'
         'name': 'markup.underline.link.muse'
+      }
+    ]
+  'unordered-list-marker':
+    'patterns': [
+      {
+        'match': '^\\s+(-)\\s'
+        'captures':
+          '1':
+            'name': 'variable.unordered.list.muse'
+      }
+    ]
+  'ordered-list-marker':
+    'patterns': [
+      {
+        'match': '^\\s+([1-9][0-9]*\\.)\\s'
+        'captures':
+          '1':
+            'name': 'variable.ordered.list.muse'
       }
     ]

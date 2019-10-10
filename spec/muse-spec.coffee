@@ -191,3 +191,32 @@ describe "Muse grammar", ->
     expect(tokens[0]).toEqual value: "[[", scopes: ["source.muse", "markup.underline.link.muse"]
     expect(tokens[1]).toEqual value: "https://example.com", scopes: ["source.muse", "markup.underline.link.muse"]
     expect(tokens[2]).toEqual value: "]]", scopes: ["source.muse", "markup.underline.link.muse"]
+
+  it "tokenizes unordered list markers", ->
+    {tokens} = grammar.tokenizeLine(" - List item")
+    expect(tokens[0]).toEqual value: " ", scopes: ["source.muse"]
+    expect(tokens[1]).toEqual value: "-", scopes: ["source.muse", "variable.unordered.list.muse"]
+    expect(tokens[2]).toEqual value: " ", scopes: ["source.muse"]
+    expect(tokens[3]).toEqual value: "List item", scopes: ["source.muse"]
+
+  it "tokenizes ordered list markers", ->
+    {tokens} = grammar.tokenizeLine(" 1. List item")
+    expect(tokens[0]).toEqual value: " ", scopes: ["source.muse"]
+    expect(tokens[1]).toEqual value: "1.", scopes: ["source.muse", "variable.ordered.list.muse"]
+    expect(tokens[2]).toEqual value: " ", scopes: ["source.muse"]
+    expect(tokens[3]).toEqual value: "List item", scopes: ["source.muse"]
+
+    # Can't be with 0
+    {tokens} = grammar.tokenizeLine(" 0. Not a list item")
+    expect(tokens[0]).toEqual value: " 0. Not a list item", scopes: ["source.muse"]
+
+    # Can't start with 0
+    {tokens} = grammar.tokenizeLine(" 01. Not a list item")
+    expect(tokens[0]).toEqual value: " 01. Not a list item", scopes: ["source.muse"]
+
+    # Can contain 0
+    {tokens} = grammar.tokenizeLine(" 10. List item")
+    expect(tokens[0]).toEqual value: " ", scopes: ["source.muse"]
+    expect(tokens[1]).toEqual value: "10.", scopes: ["source.muse", "variable.ordered.list.muse"]
+    expect(tokens[2]).toEqual value: " ", scopes: ["source.muse"]
+    expect(tokens[3]).toEqual value: "List item", scopes: ["source.muse"]
