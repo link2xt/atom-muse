@@ -50,10 +50,62 @@ describe "Muse grammar", ->
     expect(tokens[1]).toEqual value: "Foo bar", scopes: ["source.muse", "markup.italic.muse"]
     expect(tokens[2]).toEqual value: "*", scopes: ["source.muse", "markup.italic.muse"]
 
+    # Comma after closing *
+    {tokens} = grammar.tokenizeLine("Foo *bar*, baz")
+    expect(tokens[0]).toEqual value: "Foo ", scopes: ["source.muse"]
+    expect(tokens[1]).toEqual value: "*", scopes: ["source.muse", "markup.italic.muse"]
+    expect(tokens[2]).toEqual value: "bar", scopes: ["source.muse", "markup.italic.muse"]
+    expect(tokens[3]).toEqual value: "*", scopes: ["source.muse", "markup.italic.muse"]
+    expect(tokens[4]).toEqual value: ", baz", scopes: ["source.muse"]
+
+    # Letter after closing *
+    {tokens} = grammar.tokenizeLine("Foo *bar*x bat* baz")
+    expect(tokens[0]).toEqual value: "Foo ", scopes: ["source.muse"]
+    expect(tokens[1]).toEqual value: "*", scopes: ["source.muse", "markup.italic.muse"]
+    expect(tokens[2]).toEqual value: "bar*x bat", scopes: ["source.muse", "markup.italic.muse"]
+    expect(tokens[3]).toEqual value: "*", scopes: ["source.muse", "markup.italic.muse"]
+    expect(tokens[4]).toEqual value: " baz", scopes: ["source.muse"]
+
+    # Newline after opening *
+    {tokens} = grammar.tokenizeLine("*\nFoo bar*")
+    expect(tokens[0]).toEqual value: "*\nFoo bar*", scopes: ["source.muse"]
+
+    # Newline before closing *
+    {tokens} = grammar.tokenizeLine("*Foo bar\n* baz*")
+    expect(tokens[0]).toEqual value: "*", scopes: ["source.muse", "markup.italic.muse"]
+    expect(tokens[1]).toEqual value: "Foo bar\n* baz", scopes: ["source.muse", "markup.italic.muse"]
+    expect(tokens[2]).toEqual value: "*", scopes: ["source.muse", "markup.italic.muse"]
+
   it "tokenizes strong emphasis", ->
     {tokens} = grammar.tokenizeLine("**Foo bar**")
     expect(tokens[0]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
     expect(tokens[1]).toEqual value: "Foo bar", scopes: ["source.muse", "markup.bold.muse"]
+    expect(tokens[2]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
+
+    # Comma after closing **
+    {tokens} = grammar.tokenizeLine("Foo **bar**, baz")
+    expect(tokens[0]).toEqual value: "Foo ", scopes: ["source.muse"]
+    expect(tokens[1]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
+    expect(tokens[2]).toEqual value: "bar", scopes: ["source.muse", "markup.bold.muse"]
+    expect(tokens[3]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
+    expect(tokens[4]).toEqual value: ", baz", scopes: ["source.muse"]
+
+    # Letter after closing **
+    {tokens} = grammar.tokenizeLine("Foo **bar**x bat** baz")
+    expect(tokens[0]).toEqual value: "Foo ", scopes: ["source.muse"]
+    expect(tokens[1]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
+    expect(tokens[2]).toEqual value: "bar**x bat", scopes: ["source.muse", "markup.bold.muse"]
+    expect(tokens[3]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
+    expect(tokens[4]).toEqual value: " baz", scopes: ["source.muse"]
+
+    # Newline after opening *
+    {tokens} = grammar.tokenizeLine("**\nFoo bar**")
+    expect(tokens[0]).toEqual value: "**\nFoo bar**", scopes: ["source.muse"]
+
+    # Newline before closing *
+    {tokens} = grammar.tokenizeLine("**Foo bar\n** baz**")
+    expect(tokens[0]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
+    expect(tokens[1]).toEqual value: "Foo bar\n** baz", scopes: ["source.muse", "markup.bold.muse"]
     expect(tokens[2]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
 
   it "tokenizes code", ->

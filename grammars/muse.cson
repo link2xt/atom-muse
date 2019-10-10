@@ -62,17 +62,17 @@
     'patterns': [
       {
         'begin': '\\*\\*\\*(?!\\s|\\*)'
-        'end': '(?<!\\s)\\*\\*\\*'
+        'end': '(?<!\\s)\\*\\*\\*(?![[:alnum:]])'
         'name': 'markup.bold.italic.muse'
       },
       {
         'begin': '\\\*\\\*(?!\\s|\\*)'
-        'end': '(?<!\\s)\\\*\\\*'
+        'end': '(?<!\\s)\\\*\\\*(?![[:alnum:]])'
         'name': 'markup.bold.muse'
       },
       {
         'begin': '\\*(?!\\s|\\*)'
-        'end': '(?<!\\s)\\*'
+        'end': '(?<!\\s)\\*(?![[:alnum:]])'
         'name': 'markup.italic.muse'
       },
       {
