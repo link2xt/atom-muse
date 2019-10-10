@@ -186,6 +186,21 @@ describe "Muse grammar", ->
     {tokens} = grammar.tokenizeLine(">foo bar")
     expect(tokens[0]).toEqual value: ">foo bar", scopes: ["source.muse"]
 
+  it "tokenizes quote tag", ->
+    {tokens} = grammar.tokenizeLine("<quote>\nSimple quote\n</quote>")
+    expect(tokens[0]).toEqual value: "<quote>", scopes: ["source.muse", "markup.quote.muse"]
+    expect(tokens[1]).toEqual value: "\nSimple quote\n", scopes: ["source.muse", "markup.quote.muse"]
+    expect(tokens[2]).toEqual value: "</quote>", scopes: ["source.muse", "markup.quote.muse"]
+
+    {tokens} = grammar.tokenizeLine("<quote>\n - List item inside quote\n</quote>")
+    expect(tokens[0]).toEqual value: "<quote>", scopes: ["source.muse", "markup.quote.muse"]
+    expect(tokens[1]).toEqual value: "\n", scopes: ["source.muse", "markup.quote.muse"]
+    expect(tokens[2]).toEqual value: " ", scopes: ["source.muse", "markup.quote.muse"]
+    expect(tokens[3]).toEqual value: "-", scopes: ["source.muse", "markup.quote.muse", "variable.unordered.list.muse"]
+    expect(tokens[4]).toEqual value: " ", scopes: ["source.muse", "markup.quote.muse"]
+    expect(tokens[5]).toEqual value: "List item inside quote\n", scopes: ["source.muse", "markup.quote.muse"]
+    expect(tokens[6]).toEqual value: "</quote>", scopes: ["source.muse", "markup.quote.muse"]
+
   it "tokenizes links", ->
     {tokens} = grammar.tokenizeLine("[[https://example.com]]")
     expect(tokens[0]).toEqual value: "[[", scopes: ["source.muse", "markup.underline.link.muse"]

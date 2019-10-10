@@ -4,24 +4,29 @@
   'muse'
 ]
 'patterns': [
-  { 'include': '#code' }
-  { 'include': '#code-tag' }
-  { 'include': '#verbatim-tag'}
-  { 'include': '#emphasis' }
-  { 'include': '#link' }
-  { 'include': '#del-tag' }
-  { 'include': '#comment-line' }
-  { 'include': '#comment-block' }
-  { 'include': '#horizontal-rule' }
-  { 'include': '#page-break' }
-  { 'include': '#example'}
-  { 'include': '#example-tag' }
-  { 'include': '#heading' }
-  { 'include': '#quote-line' }
-  { 'include': '#unordered-list-marker' }
-  { 'include': '#ordered-list-marker' }
+  { 'include': '#body' }
 ]
 'repository':
+  'body':
+    patterns: [
+      { 'include': '#code' }
+      { 'include': '#code-tag' }
+      { 'include': '#verbatim-tag'}
+      { 'include': '#emphasis' }
+      { 'include': '#link' }
+      { 'include': '#del-tag' }
+      { 'include': '#comment-line' }
+      { 'include': '#comment-block' }
+      { 'include': '#horizontal-rule' }
+      { 'include': '#page-break' }
+      { 'include': '#example'}
+      { 'include': '#example-tag' }
+      { 'include': '#heading' }
+      { 'include': '#quote-line' }
+      { 'include': '#quote-tag' }
+      { 'include': '#unordered-list-marker' }
+      { 'include': '#ordered-list-marker' }
+    ]
   'comment-line':
     {
       'match': '^;(\\s.*|)$'
@@ -132,6 +137,17 @@
         'name': 'markup.quote.muse'
       }
     ]
+  'quote-tag':
+    {
+      'begin': '<quote>',
+      'patterns': [
+        {
+          'include': '#body'
+        }
+      ]
+      'end': '</quote>',
+      'name': 'markup.quote.muse'
+    }
   'link':
     'patterns': [
       {
