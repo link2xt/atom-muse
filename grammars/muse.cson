@@ -61,17 +61,17 @@
   'emphasis':
     'patterns': [
       {
-        'begin': '\\*\\*\\*(?!\\s|\\*)'
+        'begin': '(?<![[:alnum:]]|\\*)\\*\\*\\*(?!\\s|\\*)'
         'end': '(?<!\\s)\\*\\*\\*(?![[:alnum:]])'
         'name': 'markup.bold.italic.muse'
       },
       {
-        'begin': '\\\*\\\*(?!\\s|\\*)'
+        'begin': '(?<![[:alnum:]]|\\*)\\\*\\\*(?!\\s|\\*)'
         'end': '(?<!\\s)\\\*\\\*(?![[:alnum:]])'
         'name': 'markup.bold.muse'
       },
       {
-        'begin': '\\*(?!\\s|\\*)'
+        'begin': '(?<![[:alnum:]]|\\*)\\*(?!\\s|\\*)'
         'end': '(?<!\\s)\\*(?![[:alnum:]])'
         'name': 'markup.italic.muse'
       },
@@ -94,7 +94,7 @@
   'code':
     'patterns': [
       {
-        'begin': '=(?!\\s|=)',
+        'begin': '(?<![[:alnum:]])=(?!\\s|=)',
         'end': '=',
         'name': 'markup.raw.muse'
       }

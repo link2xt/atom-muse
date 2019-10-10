@@ -50,6 +50,9 @@ describe "Muse grammar", ->
     expect(tokens[1]).toEqual value: "Foo bar", scopes: ["source.muse", "markup.italic.muse"]
     expect(tokens[2]).toEqual value: "*", scopes: ["source.muse", "markup.italic.muse"]
 
+    {tokens} = grammar.tokenizeLine("Not*emphasized foo*bar")
+    expect(tokens[0]).toEqual value: "Not*emphasized foo*bar", scopes: ["source.muse"]
+
     # Comma after closing *
     {tokens} = grammar.tokenizeLine("Foo *bar*, baz")
     expect(tokens[0]).toEqual value: "Foo ", scopes: ["source.muse"]
@@ -81,6 +84,9 @@ describe "Muse grammar", ->
     expect(tokens[0]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
     expect(tokens[1]).toEqual value: "Foo bar", scopes: ["source.muse", "markup.bold.muse"]
     expect(tokens[2]).toEqual value: "**", scopes: ["source.muse", "markup.bold.muse"]
+
+    {tokens} = grammar.tokenizeLine("Not**emphasized foo**bar")
+    expect(tokens[0]).toEqual value: "Not**emphasized foo**bar", scopes: ["source.muse"]
 
     # Comma after closing **
     {tokens} = grammar.tokenizeLine("Foo **bar**, baz")
@@ -123,6 +129,9 @@ describe "Muse grammar", ->
     # Just three "="
     {tokens} = grammar.tokenizeLine("===")
     expect(tokens[0]).toEqual value: "===", scopes: ["source.muse"]
+
+    {tokens} = grammar.tokenizeLine("not=code foo=bar")
+    expect(tokens[0]).toEqual value: "not=code foo=bar", scopes: ["source.muse"]
 
   it "tokenizes code tag", ->
     {tokens} = grammar.tokenizeLine("<code>code</code>")
