@@ -1,6 +1,6 @@
 {
   "name": "language-muse",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Syntax highlighting and snippets for Muse markup",
   "keywords": [
     "language",
