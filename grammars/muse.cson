@@ -24,6 +24,7 @@
       { 'include': '#heading' }
       { 'include': '#quote-line' }
       { 'include': '#quote-tag' }
+      { 'include': '#invalid-closing-tag' }
       { 'include': '#unordered-list-marker' }
       { 'include': '#ordered-list-marker' }
     ]
@@ -154,6 +155,13 @@
         'begin': '\\[\\['
         'end': ']]'
         'name': 'markup.underline.link.muse'
+      }
+    ]
+  'invalid-closing-tag':
+    'patterns': [
+      {
+        'match': '</[^>]*>',
+        'name': 'invalid.illegal.muse'
       }
     ]
   'unordered-list-marker':

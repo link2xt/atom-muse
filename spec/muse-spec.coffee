@@ -207,6 +207,10 @@ describe "Muse grammar", ->
     expect(tokens[1]).toEqual value: "https://example.com", scopes: ["source.muse", "markup.underline.link.muse"]
     expect(tokens[2]).toEqual value: "]]", scopes: ["source.muse", "markup.underline.link.muse"]
 
+  it "illegal closing tag", ->
+    {tokens} = grammar.tokenizeLine("</em>")
+    expect(tokens[0]).toEqual value: "</em>", scopes: ["source.muse", "invalid.illegal.muse"]
+
   it "tokenizes unordered list markers", ->
     {tokens} = grammar.tokenizeLine(" - List item")
     expect(tokens[0]).toEqual value: " ", scopes: ["source.muse"]
