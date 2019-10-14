@@ -70,17 +70,17 @@
     'patterns': [
       {
         'begin': '(?<![[:alnum:]]|\\*)\\*\\*\\*(?!\\s|\\*)'
-        'end': '(?<!\\s)\\*\\*\\*(?![[:alnum:]])'
+        'end': '(?<=[^\\s])\\*\\*\\*(?![[:alnum:]])'
         'name': 'markup.bold.italic.muse'
       },
       {
         'begin': '(?<![[:alnum:]]|\\*)\\\*\\\*(?!\\s|\\*)'
-        'end': '(?<!\\s)\\\*\\\*(?![[:alnum:]])'
+        'end': '(?<=[^\\s])\\\*\\\*(?![[:alnum:]])'
         'name': 'markup.bold.muse'
       },
       {
         'begin': '(?<![[:alnum:]]|\\*)\\*(?!\\s|\\*)'
-        'end': '(?<!\\s)\\*(?![[:alnum:]])'
+        'end': '(?<=[^\\s])\\*(?![[:alnum:]])'
         'name': 'markup.italic.muse'
       },
       {
