@@ -35,23 +35,23 @@
     }
   'comment-block':
     {
-      'begin': '<comment>',
-      'end': '</comment>',
+      'begin': '<comment>'
+      'end': '</comment>'
       'name': 'comment.block.muse'
     }
   'horizontal-rule':
     {
-      'match': '^-{4,}\\s*$',
+      'match': '^-{4,}\\s*$'
       'name': 'comment.hr.muse'
     }
   'page-break':
     {
-      'match': '^\\s{6,}\\* \\* \\* \\* \\*\\s*$',
+      'match': '^\\s{6,}\\* \\* \\* \\* \\*\\s*$'
       'name': 'comment.pagebreak.muse'
     }
   'heading':
     {
-      'match': '^\\\*+ .*$',
+      'match': '^\\\*+ .*$'
       'name': 'markup.heading.muse'
     }
   'example':
@@ -62,8 +62,8 @@
     }
   'example-tag':
     {
-      'begin': '<example>',
-      'end': '</example>',
+      'begin': '<example>'
+      'end': '</example>'
       'name': 'markup.raw.muse'
     }
   'emphasis':
@@ -72,27 +72,27 @@
         'begin': '(?<![[:alnum:]]|\\*)\\*\\*\\*(?!\\s|\\*)'
         'end': '(?<=[^\\s])\\*\\*\\*(?![[:alnum:]])'
         'name': 'markup.bold.italic.muse'
-      },
+      }
       {
         'begin': '(?<![[:alnum:]]|\\*)\\\*\\\*(?!\\s|\\*)'
         'end': '(?<=[^\\s])\\\*\\\*(?![[:alnum:]])'
         'name': 'markup.bold.muse'
-      },
+      }
       {
         'begin': '(?<![[:alnum:]]|\\*)\\*(?!\\s|\\*)'
         'end': '(?<=[^\\s])\\*(?![[:alnum:]])'
         'name': 'markup.italic.muse'
-      },
+      }
       {
         'begin': '<strong>'
         'end': '</strong>'
         'name': 'markup.bold.muse'
-      },
+      }
       {
         'begin': '<em>'
         'end': '</em>'
         'name': 'markup.italic.muse'
-      },
+      }
       {
         'begin': '<strong>'
         'end': '</strong>'
@@ -100,85 +100,67 @@
       }
     ]
   'code':
-    'patterns': [
-      {
-        'begin': '(?<![[:alnum:]])=(?!\\s|=)',
-        'end': '=',
-        'name': 'markup.raw.muse'
-      }
-    ]
+    {
+      'begin': '(?<![[:alnum:]])=(?!\\s|=)'
+      'end': '='
+      'name': 'markup.raw.muse'
+    }
   'code-tag':
-    'patterns': [
-      {
-        'begin': '<code>',
-        'end': '</code>'
-        'name': 'markup.raw.muse'
-      }
-    ]
+    {
+      'begin': '<code>'
+      'end': '</code>'
+      'name': 'markup.raw.muse'
+    }
   'verbatim-tag':
-    'patterns': [
-      {
-        'begin': '<verbatim>',
-        'end': '</verbatim>',
-        'name': 'markup.raw.muse'
-      }
-    ]
+    {
+      'begin': '<verbatim>'
+      'end': '</verbatim>'
+      'name': 'markup.raw.muse'
+    }
   'del-tag':
-    'patterns': [
-      {
-        'begin': '<del>'
-        'end': '</del>'
-        'name': 'markup.deleted.muse'
-      }
-    ]
+    {
+      'begin': '<del>'
+      'end': '</del>'
+      'name': 'markup.deleted.muse'
+    }
   'quote-line':
-    'patterns': [
-      {
-        'match': '^>(\\s.*)$'
-        'name': 'markup.quote.muse'
-      }
-    ]
+    {
+      'match': '^>(\\s.*)$'
+      'name': 'markup.quote.muse'
+    }
   'quote-tag':
     {
-      'begin': '<quote>',
+      'begin': '<quote>'
       'patterns': [
         {
           'include': '#body'
         }
       ]
-      'end': '</quote>',
+      'end': '</quote>'
       'name': 'markup.quote.muse'
     }
   'link':
-    'patterns': [
-      {
-        'begin': '\\[\\['
-        'end': ']]'
-        'name': 'markup.underline.link.muse'
-      }
-    ]
+    {
+      'begin': '\\[\\['
+      'end': ']]'
+      'name': 'markup.underline.link.muse'
+    }
   'invalid-closing-tag':
-    'patterns': [
-      {
-        'match': '</[^>]*>',
-        'name': 'invalid.illegal.muse'
-      }
-    ]
+    {
+      'match': '</[^>]*>'
+      'name': 'invalid.illegal.muse'
+    }
   'unordered-list-marker':
-    'patterns': [
-      {
-        'match': '^\\s+(-)\\s'
-        'captures':
-          '1':
-            'name': 'variable.unordered.list.muse'
-      }
-    ]
+    {
+      'match': '^\\s+(-)\\s'
+      'captures':
+        '1':
+          'name': 'variable.unordered.list.muse'
+    }
   'ordered-list-marker':
-    'patterns': [
-      {
-        'match': '^\\s+([1-9][0-9]*\\.)\\s'
-        'captures':
-          '1':
-            'name': 'variable.ordered.list.muse'
-      }
-    ]
+    {
+      'match': '^\\s+([1-9][0-9]*\\.)\\s'
+      'captures':
+        '1':
+          'name': 'variable.ordered.list.muse'
+    }
